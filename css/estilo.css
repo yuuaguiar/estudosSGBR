@@ -44,7 +44,7 @@ nav a {
 
 .container-topo {
     margin-top: 70px;
-    height: 500px;
+    height: 420px;
     background-image: url('../assets/img-fundo.jpg');
     background-size: cover;
     background-position: center;
@@ -58,19 +58,19 @@ nav a {
 .container-titulo {
     display: flex;
     color: #fff;
-    max-width: 400px;
+    max-width: 520px;
     max-height: 100px;
-    padding: 40px;
+    padding: 24px;
     background-color: rgba(2, 68, 16, 0.7);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    border-radius: 12px;
     border: 2px solid #fff;
 }
 
 .container-conteudo {
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,8 +84,8 @@ nav a {
 }
 
 #sobre {
-    margin-top: 50px;
-    padding: 50px 20px 0;
+    margin-top: 20px;
+    padding: 30px 20px 0;
 }
 
 #sobre h1,
@@ -100,7 +100,7 @@ nav a {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 20px;
-    margin: 35px auto 0;
+    margin: 25px auto 50px;
     max-width: 1200px;
     width: 100%;
 
@@ -146,6 +146,66 @@ nav a {
 
 #rota iframe {
     width: 100%;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #4fb3a3;
+    color: #fff;
+}
+.rodape .dados {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+}
+.rodape .dados h3 {
+    flex: 0 0 220px;
+    margin: 0;
+    font-size: 18px;
+}
+.rodape .dados .endereco,
+.rodape .dados .telefone,
+.rodape .dados .reserva {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.rodape .dados img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+.rodape .dados .endereco a,
+.rodape .dados .reserva a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+.rodape .dados .endereco p,
+.rodape .dados .reserva p,
+.rodape .dados .telefone p { margin: 0; }
+.rodape .dados p { margin:0; color:#fff; }
+.rodape .direitos {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    color: #fff;
+}
+
+@media (max-width: 860px) {
+    .rodape .dados { flex-direction: column; align-items: flex-start; padding: 16px; }
+    .rodape .dados h3 { flex: none; margin-bottom: 10px; }
+    .rodape .dados .endereco, .rodape .dados .telefone, .rodape .dados .reserva { width: 100%; }
+    .rodape .dados img { width: 40px; height: 40px; }
+    .rodape .direitos { padding-bottom: 20px; }
 }
 
 @media (max-width: 900px) {
