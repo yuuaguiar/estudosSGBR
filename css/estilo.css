@@ -1,0 +1,105 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.topo {
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.menu {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logotipo {
+    font-size: 24px;
+    font-weight: 250px;
+}
+
+.logotipo a {
+    text-decoration: none;
+    color: #5ca9dd;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.container-topo {
+    margin-top: 70px;
+    height: 500px;
+    background-image: url('../assets/img-fundo.jpg');
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-titulo {
+    display: flex;
+    color: #fff;
+    max-width: 400px;
+    max-height: 100px;
+    padding: 40px;
+    background-color: rgba(2, 68, 16, 0.7);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 2px solid #fff;
+}
+
+.container-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#quartos {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+}
+
+#quartos div {
+    flex: 1;
+    text-align: center;
+    border-bottom: 3px solid #4fb3a3;
+    padding-bottom: 15px;
+}
+
+#quartos img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+#quartos a {
+    display: block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
