@@ -4,113 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pousada Maré Alta</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap">
 </head>
-<body>
-    <div class="topo">
-        <div class="menu">
-            <h1 class="logotipo">
-                <a href="index.html">Pousada Maré Alta</a>
+<body class="font-sans">
+    <!-- HEADER / TOPO -->
+    <div class="w-full bg-white fixed top-0 left-0 z-[1000]">
+        <div class="max-w-4xl mx-auto px-5 flex items-center justify-between py-5">
+            <h1 class="text-2xl">
+                <a href="index.html" class="text-blue-400 no-underline">Pousada Maré Alta</a>
             </h1>
-            <nav class="linksmenu">
-                <a href="#sobre">SOBRE</a>
-                <a href="#rota">ROTA</a>
-                <a href="#quartos">QUARTOS</a>
+            <nav class="flex gap-8">
+                <a href="#sobre" class="text-gray-600 text-base no-underline">SOBRE</a>
+                <a href="#rota" class="text-gray-600 text-base no-underline">ROTA</a>
+                <a href="#quartos" class="text-gray-600 text-base no-underline">QUARTOS</a>
             </nav>
         </div>
     </div>
 
-    <div class="conteudo">
-        <div class="container-topo">
-            <div class="container-titulo">
-                <h1>Pousada Maré Alta</h1>
-                <p>O refúgio perfeito na Costa Verde, em Angra dos Reis.</p>
+    <!-- CONTEUDO PRINCIPAL -->
+    <div class="w-full">
+        <!-- HERO / BANNER TOPO -->
+        <div class="mt-20 h-96 bg-cover bg-center flex flex-col items-center justify-center" style="background-image: url('assets/img-fundo.jpg');">
+            <div class="flex text-white max-w-lg rounded-lg border-2 border-white p-6 flex-col items-center justify-center leading-6" style="background-color: rgba(2, 68, 16, 0.7);">
+                <h1 class="text-white font-bold text-5xl">Pousada Maré Alta</h1>
+                <p class="text-white">O refúgio perfeito na Costa Verde, em Angra dos Reis.</p>
             </div>
         </div>
-        <div class="container-conteudo">
+
+        <!-- CONTEUDO INICIAL -->
+        <div class="mt-10 flex flex-col items-center">
             <h1>SEJA BEM-VINDO(A)!</h1>
             <p>Relaxe em nossas acomodações e curta o melhor de Angra dos Reis.</p>
             <p>Temos quartos para solteiro, casal ou família.</p>
         </div>
-        <div id="quartos">
-            <div class="solteiro">
-                <img src="assets/quarto-solteiro1.jpg" alt="Quarto de Solteiro">
-                <a href="#">Quarto de solteiro</a>
+
+        <!-- SEÇÃO QUARTOS -->
+        <div id="quartos" class="max-w-4xl mx-auto flex gap-8">
+            <div class="flex-1 text-center border-b-2 pb-4" style="border-color: #4fb3a3;">
+                <img src="assets/quarto-solteiro1.jpg" alt="Quarto de Solteiro" class="w-full h-44">
+                <a href="#" class="block mt-4 no-underline text-gray-900 font-bold uppercase">Quarto de solteiro</a>
             </div>
-            <div class="casal">
-                <img src="assets/quarto-casal1.jpg" alt="Quarto de Casal">
-                <a href="#">Quarto de Casal</a>
+            <div class="flex-1 text-center border-b-2 pb-4" style="border-color: #4fb3a3;">
+                <img src="assets/quarto-casal1.jpg" alt="Quarto de Casal" class="w-full h-44">
+                <a href="#" class="block mt-4 no-underline text-gray-900 font-bold uppercase">Quarto de Casal</a>
             </div>
-            <div class="familia">
-                <img src="assets/quarto-familia1.jpg" alt="Quarto família">
-                <a href="#">Quarto família</a>
+            <div class="flex-1 text-center border-b-2 pb-4" style="border-color: #4fb3a3;">
+                <img src="assets/quarto-familia1.jpg" alt="Quarto família" class="w-full h-44">
+                <a href="#" class="block mt-4 no-underline text-gray-900 font-bold uppercase">Quarto família</a>
             </div>
         </div>
     </div>
-    <div id="rota">
+
+    <!-- SEÇÃO ROTA -->
+    <div id="rota" class="mt-12 flex flex-col items-center">
         <h1>Rota</h1>
         <p>Veja como chegar até a pousada</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.079033310523!2d-52.02471894367229!3d-27.231372771469673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e37f6242555555%3A0xa639e9266b10c3e7!2sPra%C3%A7a%20Dogello%20Goss!5e0!3m2!1spt-BR!2sbr!4v1778806941651!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.079033310523!2d-52.02471894367229!3d-27.231372771469673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e37f6242555555%3A0xa639e9266b10c3e7!2sPra%C3%A7a%20Dogello%20Goss!5e0!3m2!1spt-BR!2sbr!4v1778806941651!5m2!1spt-BR!2sbr" width="600" height="450" class="w-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-        <div id="sobre">
-            <h1>Sobre a pousada!</h1>
-            <p>Conheça um pouco sobre a nossa pousada.</p>
-            <div class="container-sobre">
-                <div class="sobrepousada">
-                    <div class="card-text">
-                        <h2>A pousada</h2>
-                        <p>A Pousada Maré Alta dispõe de estacionamento privativo gratuito, piscina ao ar livre e bar.</p>
-                    </div>
-                    <img src="assets/img1.jpg" alt="A pousada">
+
+    <!-- SEÇÃO SOBRE -->
+    <div id="sobre" class="mt-5 px-5">
+        <h1 class="text-center">Sobre a pousada!</h1>
+        <p class="text-center max-w-3xl mx-auto">Conheça um pouco sobre a nossa pousada.</p>
+        <div class="grid grid-cols-2 gap-5 mt-9 max-w-4xl mx-auto">
+            <div class="flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-xl font-bold m-0">A pousada</h2>
+                    <p class="m-0 leading-relaxed text-gray-600">A Pousada Maré Alta dispõe de estacionamento privativo gratuito, piscina ao ar livre e bar.</p>
                 </div>
-                <div class="sobrequartos">
-                    <div class="card-text">
-                        <h2>Nossos quartos</h2>
-                        <p>Os quartos possuem TV de tela plana a cabo, cozinha compacta e área para refeições. Todas as acomodações têm ar-condicionado.</p>
-                    </div>
-                    <img src="assets/img2.jpg" alt="Nossos quartos">
+                <img src="assets/img1.jpg" alt="A pousada" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
+            </div>
+            <div class="flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-xl font-bold m-0">Nossos quartos</h2>
+                    <p class="m-0 leading-relaxed text-gray-600">Os quartos possuem TV de tela plana a cabo, cozinha compacta e área para refeições. Todas as acomodações têm ar-condicionado.</p>
                 </div>
-                <div class="sobrealimentacao">
-                    <div class="card-text">
-                        <h2>Alimentação</h2>
-                        <p>A pousada serve café da manhã em estilo continental ou buffet. Nossos restaurantes funcionam 24hrs.</p>
-                    </div>
-                    <img src="assets/img3.jpg" alt="Alimentação">
+                <img src="assets/img2.jpg" alt="Nossos quartos" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
+            </div>
+            <div class="flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-xl font-bold m-0">Alimentação</h2>
+                    <p class="m-0 leading-relaxed text-gray-600">A pousada serve café da manhã em estilo continental ou buffet. Nossos restaurantes funcionam 24hrs.</p>
                 </div>
-                <div class="sobrerecepcao">
-                    <div class="card-text">
-                        <h2>Recepção</h2>
-                        <p>Nossa recepção fica aberta 24hrs.</p>
-                    </div>
-                    <img src="assets/img5.jpg" alt="Recepção">
+                <img src="assets/img3.jpg" alt="Alimentação" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
+            </div>
+            <div class="flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-xl font-bold m-0">Recepção</h2>
+                    <p class="m-0 leading-relaxed text-gray-600">Nossa recepção fica aberta 24hrs.</p>
                 </div>
+                <img src="assets/img5.jpg" alt="Recepção" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
             </div>
-        </div>
-    <div class="rodape">
-        <div class="dados">
-            <h3>Entre em contato <br>conosco:</h3>
-            <div class="endereco">
-                <a href="https://google.com.br" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/icones/endereco.png" alt="Icone de endereço">
-                    <p>Endereço Av. 123, 222 <br> Rio de Janeiro RJ</p>
-                </a>
-            </div>
-            <div class="telefone">
-                <img src="assets/icones/telefone.png" alt="Icone telefone">
-                <p>Cel: 5521000000000</p>
-            </div>
-            <div class="reserva">
-                <img src="assets/icones/calendario.png" alt="Icone calendário">
-                <a href="https://booking.com" target="_blank" rel="noopener noreferrer">
-                    <p>Faça sua reserva pelo <br> Booking.com</p>
-                </a>
-            </div>
-        </div>
-        <div class="direitos">
-            <p>© 2026 Pousada Maré Alta</p>
         </div>
     </div>
-    
+
+    <!-- RODAPÉ -->
+    <div class="mt-12" style="background-color: #4fb3a3; color: white;">
+        <div class="max-w-4xl mx-auto flex gap-5 items-center p-5">
+            <h3 class="flex-shrink-0 text-lg font-bold m-0">Entre em contato<br>conosco:</h3>
+            <div class="flex-1 flex items-center gap-3">
+                <a href="https://google.com.br" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 no-underline text-white">
+                    <img src="assets/icones/endereco.png" alt="Icone de endereço" class="w-12 h-12">
+                    <p class="m-0">Endereço Av. 123, 222 <br> Rio de Janeiro RJ</p>
+                </a>
+            </div>
+            <div class="flex-1 flex items-center gap-3">
+                <img src="assets/icones/telefone.png" alt="Icone telefone" class="w-12 h-12">
+                <p class="m-0">Cel: 5521000000000</p>
+            </div>
+            <div class="flex-1 flex items-center gap-3">
+                <img src="assets/icones/calendario.png" alt="Icone calendário" class="w-12 h-12">
+                <a href="https://booking.com" target="_blank" rel="noopener noreferrer" class="no-underline text-white">
+                    <p class="m-0">Faça sua reserva pelo <br> Booking.com</p>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto text-center p-4 border-t border-black border-opacity-5">
+            <p class="m-0 text-white">© 2026 Pousada Maré Alta</p>
+        </div>
+    </div>
 </body>
 </html>
