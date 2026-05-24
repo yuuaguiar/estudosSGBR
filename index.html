@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pousada Maré Alta</title>
-    <!-- Tailwind CSS via CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap">
 </head>
@@ -34,8 +34,8 @@
         </div>
 
         <!-- CONTEUDO INICIAL -->
-        <div class="mt-10 flex flex-col items-center">
-            <h1>SEJA BEM-VINDO(A)!</h1>
+        <div class="mt-10 flex flex-col items-center mb-5">
+            <h1 class="text-3xl font-bold text-gray-800 mb-5">SEJA BEM-VINDO(A)!</h1>
             <p>Relaxe em nossas acomodações e curta o melhor de Angra dos Reis.</p>
             <p>Temos quartos para solteiro, casal ou família.</p>
         </div>
@@ -59,14 +59,14 @@
 
     <!-- SEÇÃO ROTA -->
     <div id="rota" class="mt-12 flex flex-col items-center">
-        <h1>Rota</h1>
-        <p>Veja como chegar até a pousada</p>
+        <h1 class="text-3xl font-bold text-gray-800 mb-5">Rota</h1>
+        <p class="mb-5">Veja como chegar até a pousada</p>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.079033310523!2d-52.02471894367229!3d-27.231372771469673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e37f6242555555%3A0xa639e9266b10c3e7!2sPra%C3%A7a%20Dogello%20Goss!5e0!3m2!1spt-BR!2sbr!4v1778806941651!5m2!1spt-BR!2sbr" width="600" height="450" class="w-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <!-- SEÇÃO SOBRE -->
     <div id="sobre" class="mt-5 px-5">
-        <h1 class="text-center">Sobre a pousada!</h1>
+        <h1 class="text-center text-3xl font-bold text-gray-800 mb-5">Sobre a pousada!</h1>
         <p class="text-center max-w-3xl mx-auto">Conheça um pouco sobre a nossa pousada.</p>
         <div class="grid grid-cols-2 gap-5 mt-9 max-w-4xl mx-auto">
             <div class="flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
@@ -125,5 +125,7 @@
             <p class="m-0 text-white">© 2026 Pousada Maré Alta</p>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
