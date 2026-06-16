@@ -134,16 +134,22 @@ camposLogin.forEach(campo => {
 });
 
 if (botaoLogin) {
-    botaoLogin.style.transition = 'transform 0.3s ease, background-color 0.3s ease';
+    const sombraBotaoLogin = '0 10px 22px rgba(47, 159, 143, 0.35)';
+    const sombraBotaoLoginAtivo = '0 14px 28px rgba(47, 159, 143, 0.45)';
+
+    botaoLogin.style.transition = 'transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease';
+    botaoLogin.style.boxShadow = sombraBotaoLogin;
 
     botaoLogin.addEventListener('mouseenter', () => {
-        botaoLogin.style.transform = 'translateY(-2px)';
-        botaoLogin.style.backgroundColor = '#399b8b';
+        botaoLogin.style.transform = 'translateY(-3px) scale(1.02)';
+        botaoLogin.style.backgroundColor = '#247f72';
+        botaoLogin.style.boxShadow = sombraBotaoLoginAtivo;
     });
 
     botaoLogin.addEventListener('mouseleave', () => {
         botaoLogin.style.transform = 'translateY(0)';
-        botaoLogin.style.backgroundColor = '#4fb3a3';
+        botaoLogin.style.backgroundColor = '#2f9f8f';
+        botaoLogin.style.boxShadow = sombraBotaoLogin;
     });
 }
 
