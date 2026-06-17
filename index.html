@@ -1,151 +1,204 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pousada Maré Alta</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap">
 </head>
-<body class="font-sans">
-    <!-- HEADER / TOPO -->
-    <div class="w-full bg-white fixed top-0 left-0 z-[1000]">
-        <div class="max-w-4xl mx-auto px-5 flex items-center justify-between py-5">
-            <h1 class="text-2xl">
-                <a href="index.html" class="text-blue-400 no-underline">Pousada Maré Alta</a>
-            </h1>
-            <nav class="flex gap-8">
-                <a href="#sobre" class="text-gray-600 text-base no-underline">SOBRE</a>
-                <a href="#rota" class="text-gray-600 text-base no-underline">ROTA</a>
-                <a href="#quartos" class="text-gray-600 text-base no-underline">QUARTOS</a>
-                <a href="#login" class="text-gray-600 text-base no-underline">LOGIN</a>
+<body class="bg-slate-50 font-sans text-slate-800">
+    <!-- Topo fixo com nome da pousada e menu principal -->
+    <header class="fixed left-0 top-0 z-[1000] w-full border-b border-slate-200/70 bg-white/95 backdrop-blur-sm">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+            <a href="#inicio" class="text-2xl font-bold text-sky-500 no-underline">Pousada Maré Alta</a>
+
+            <button id="botao-menu" type="button" class="inline-flex items-center justify-center rounded-xl border border-slate-200 p-2 text-slate-700 md:hidden" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <nav id="menu-principal" class="absolute left-0 top-full hidden w-full border-b border-slate-200 bg-white px-4 py-4 shadow-lg md:static md:flex md:w-auto md:items-center md:gap-8 md:border-0 md:bg-transparent md:px-0 md:py-0 md:shadow-none" aria-label="Menu principal">
+                <a href="#sobre" class="block py-2 text-base text-slate-600 no-underline md:py-0">SOBRE</a>
+                <a href="#rota" class="block py-2 text-base text-slate-600 no-underline md:py-0">ROTA</a>
+                <a href="#acomodacoes" class="block py-2 text-base text-slate-600 no-underline md:py-0">QUARTOS</a>
+                <div class="mt-3 rounded-2xl border border-sky-200 bg-sky-50 p-2 shadow-sm shadow-sky-100 md:mt-0">
+                    <a href="#area-do-hospede" class="block rounded-xl border border-sky-500 bg-white px-5 py-2 text-base font-bold text-sky-700 no-underline transition duration-300 hover:bg-sky-500 hover:text-white">LOGIN</a>
+                </div>
             </nav>
         </div>
-    </div>
+    </header>
 
-    <!-- CONTEUDO PRINCIPAL -->
-    <div class="w-full">
-        <!-- HERO / BANNER TOPO -->
-        <div class="mt-20 h-96 bg-cover bg-center flex flex-col items-center justify-center" style="background-image: url('assets/img-fundo.jpg');">
-            <div class="flex text-white max-w-lg rounded-lg border-2 border-white p-6 flex-col items-center justify-center leading-6" style="background-color: rgba(2, 68, 16, 0.7);">
-                <h1 class="text-white font-bold text-5xl">Pousada Maré Alta</h1>
-                <p class="text-white">O refúgio perfeito na Costa Verde, em Angra dos Reis.</p>
-            </div>
-        </div>
-
-        <!-- CONTEUDO INICIAL -->
-        <div class="mt-10 flex flex-col items-center mb-5">
-            <h1 class="text-3xl font-bold text-gray-800 mb-5">SEJA BEM-VINDO(A)!</h1>
-            <p>Relaxe em nossas acomodações e curta o melhor de Angra dos Reis.</p>
-            <p>Temos quartos para solteiro, casal ou família.</p>
-        </div>
-
-        <!-- SEÇÃO QUARTOS -->
-        <div id="quartos" class="max-w-4xl mx-auto flex gap-8">
-            <div class="bloco-quarto flex-1 text-center border-b-2 pb-4" style="border-color: #4fb3a3;">
-                <img src="assets/quarto-solteiro1.jpg" alt="Quarto de Solteiro" class="w-full h-44">
-                <a href="#" class="block mt-4 no-underline text-gray-900 font-bold uppercase">Quarto de solteiro</a>
-            </div>
-            <div class="bloco-quarto flex-1 text-center border-b-2 pb-4" style="border-color: #4fb3a3;">
-                <img src="assets/quarto-casal1.jpg" alt="Quarto de Casal" class="w-full h-44">
-                <a href="#" class="block mt-4 no-underline text-gray-900 font-bold uppercase">Quarto de Casal</a>
-            </div>
-            <div class="bloco-quarto flex-1 text-center border-b-2 pb-4" style="border-color: #4fb3a3;">
-                <img src="assets/quarto-familia1.jpg" alt="Quarto família" class="w-full h-44">
-                <a href="#" class="block mt-4 no-underline text-gray-900 font-bold uppercase">Quarto família</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- SEÇÃO ROTA -->
-    <div id="rota" class="mt-12 flex flex-col items-center">
-        <h1 class="text-3xl font-bold text-gray-800 mb-5">Rota</h1>
-        <p class="mb-5">Veja como chegar até a pousada</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.079033310523!2d-52.02471894367229!3d-27.231372771469673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e37f6242555555%3A0xa639e9266b10c3e7!2sPra%C3%A7a%20Dogello%20Goss!5e0!3m2!1spt-BR!2sbr!4v1778806941651!5m2!1spt-BR!2sbr" width="600" height="450" class="w-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-
-    <!-- SEÇÃO SOBRE -->
-    <div id="sobre" class="mt-5 px-5">
-        <h1 class="text-center text-3xl font-bold text-gray-800 mb-5">Sobre a pousada!</h1>
-        <p class="text-center max-w-3xl mx-auto">Conheça um pouco sobre a nossa pousada.</p>
-        <div class="grid grid-cols-2 gap-5 mt-9 max-w-4xl mx-auto">
-            <div class="bloco-sobre flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
-                <div class="flex flex-col gap-2">
-                    <h2 class="text-xl font-bold m-0">A pousada</h2>
-                    <p class="m-0 leading-relaxed text-gray-600">A Pousada Maré Alta dispõe de estacionamento privativo gratuito, piscina ao ar livre e bar.</p>
+    <main id="inicio" class="pt-24">
+        <!-- Banner principal com chamada da pousada -->
+        <section class="relative">
+            <div class="flex min-h-[26rem] items-center justify-center bg-cover bg-center px-4 py-16 sm:px-6" style="background-image: url('assets/img-fundo.jpg');">
+                <div class="max-w-2xl rounded-2xl border-2 border-white/80 bg-emerald-950/70 p-6 text-center text-white shadow-2xl sm:p-8">
+                    <p class="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-emerald-100">Costa Verde • Angra dos Reis</p>
+                    <h1 class="text-4xl font-bold sm:text-5xl">Pousada Maré Alta</h1>
+                    <p class="mt-4 text-base leading-7 text-emerald-50 sm:text-lg">O refúgio perfeito para descansar, aproveitar a natureza e viver dias tranquilos perto do mar.</p>
                 </div>
-                <img src="assets/img1.jpg" alt="A pousada" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
             </div>
-            <div class="bloco-sobre flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
-                <div class="flex flex-col gap-2">
-                    <h2 class="text-xl font-bold m-0">Nossos quartos</h2>
-                    <p class="m-0 leading-relaxed text-gray-600">Os quartos possuem TV de tela plana a cabo, cozinha compacta e área para refeições. Todas as acomodações têm ar-condicionado.</p>
+        </section>
+
+        <!-- Apresentação rápida da pousada -->
+        <section class="px-4 py-14 sm:px-6">
+            <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+                <p class="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-sky-600">Bem-vindo(a)</p>
+                <h2 class="text-3xl font-bold text-slate-800 sm:text-4xl">Conforto para casais, famílias e viajantes solo</h2>
+                <p class="mt-4 text-base leading-7 text-slate-600 sm:text-lg">Relaxe em nossas acomodações e curta o melhor de Angra dos Reis com uma estrutura pensada para descanso, praticidade e lazer.</p>
+            </div>
+        </section>
+
+        <!-- Área com os tipos de quartos -->
+        <section id="acomodacoes" class="px-4 pb-8 sm:px-6">
+            <div class="mx-auto max-w-6xl">
+                <div class="mb-8 text-center">
+                    <p class="text-sm font-bold uppercase tracking-[0.3em] text-sky-600">Acomodações</p>
+                    <h2 class="mt-2 text-3xl font-bold text-slate-800 sm:text-4xl">Escolha o quarto ideal para sua estadia</h2>
                 </div>
-                <img src="assets/img2.jpg" alt="Nossos quartos" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
-            </div>
-            <div class="bloco-sobre flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
-                <div class="flex flex-col gap-2">
-                    <h2 class="text-xl font-bold m-0">Alimentação</h2>
-                    <p class="m-0 leading-relaxed text-gray-600">A pousada serve café da manhã em estilo continental ou buffet. Nossos restaurantes funcionam 24hrs.</p>
+
+                <div class="grid gap-6 md:grid-cols-3">
+                    <article class="cartao-quarto overflow-hidden rounded-2xl border-b-4 border-emerald-400 bg-white text-center shadow-sm">
+                        <img src="assets/quarto-solteiro1.jpg" alt="Quarto de solteiro" class="h-56 w-full object-cover">
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold uppercase text-slate-900">Quarto de solteiro</h3>
+                            <p class="mt-2 text-sm leading-6 text-slate-600">Uma opção prática e aconchegante para quem viaja sozinho.</p>
+                        </div>
+                    </article>
+
+                    <article class="cartao-quarto overflow-hidden rounded-2xl border-b-4 border-emerald-400 bg-white text-center shadow-sm">
+                        <img src="assets/quarto-casal1.jpg" alt="Quarto de casal" class="h-56 w-full object-cover">
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold uppercase text-slate-900">Quarto de casal</h3>
+                            <p class="mt-2 text-sm leading-6 text-slate-600">Ideal para viagens românticas com conforto e privacidade.</p>
+                        </div>
+                    </article>
+
+                    <article class="cartao-quarto overflow-hidden rounded-2xl border-b-4 border-emerald-400 bg-white text-center shadow-sm">
+                        <img src="assets/quarto-familia1.jpg" alt="Quarto família" class="h-56 w-full object-cover">
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold uppercase text-slate-900">Quarto família</h3>
+                            <p class="mt-2 text-sm leading-6 text-slate-600">Mais espaço para quem quer viajar com toda a família.</p>
+                        </div>
+                    </article>
                 </div>
-                <img src="assets/img3.jpg" alt="Alimentação" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
             </div>
-            <div class="bloco-sobre flex items-center justify-between gap-5 bg-white p-6 rounded-xl shadow-lg">
-                <div class="flex flex-col gap-2">
-                    <h2 class="text-xl font-bold m-0">Recepção</h2>
-                    <p class="m-0 leading-relaxed text-gray-600">Nossa recepção fica aberta 24hrs.</p>
+        </section>
+
+        <!-- Mapa para mostrar como chegar -->
+        <section id="rota" class="px-4 py-14 sm:px-6">
+            <div class="mx-auto max-w-6xl">
+                <div class="mb-8 text-center">
+                    <p class="text-sm font-bold uppercase tracking-[0.3em] text-sky-600">Rota</p>
+                    <h2 class="mt-2 text-3xl font-bold text-slate-800 sm:text-4xl">Veja como chegar até a pousada</h2>
+                    <p class="mt-3 text-base text-slate-600">Localização fácil para você planejar sua viagem com mais tranquilidade.</p>
                 </div>
-                <img src="assets/img5.jpg" alt="Recepção" class="w-44 h-32 object-cover rounded-2xl flex-shrink-0">
+
+                <div class="overflow-hidden rounded-2xl shadow-lg">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5017.079033310523!2d-52.02471894367229!3d-27.231372771469673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e37f6242555555%3A0xa639e9266b10c3e7!2sPra%C3%A7a%20Dogello%20Goss!5e0!3m2!1spt-BR!2sbr!4v1778806941651!5m2!1spt-BR!2sbr" width="600" height="450" class="h-[22rem] w-full sm:h-[28rem]" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <!-- ÁREA DE LOGIN -->
-    <div id="login" class="mt-12 px-5">
-        <div class="max-w-4xl mx-auto grid grid-cols-2 gap-8 items-center">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-800 mb-4">Área do hóspede</h1>
-                <p class="text-gray-600 leading-relaxed">Acesse sua conta para acompanhar futuras reservas e agendamentos da pousada.</p>
+        <!-- Blocos contando os principais diferenciais -->
+        <section id="sobre" class="px-4 py-14 sm:px-6">
+            <div class="mx-auto max-w-6xl">
+                <div class="mb-8 text-center">
+                    <p class="text-sm font-bold uppercase tracking-[0.3em] text-sky-600">Sobre</p>
+                    <h2 class="mt-2 text-3xl font-bold text-slate-800 sm:text-4xl">Conheça um pouco mais sobre a pousada</h2>
+                    <p class="mt-3 text-base text-slate-600">Ambientes preparados para receber você com conforto, praticidade e atendimento atencioso.</p>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <article class="cartao-sobre flex flex-col gap-5 rounded-2xl bg-white p-6 shadow-lg sm:flex-row sm:items-center">
+                        <div class="flex flex-1 flex-col gap-2">
+                            <h3 class="text-xl font-bold">A pousada</h3>
+                            <p class="leading-7 text-slate-600">A Pousada Maré Alta dispõe de estacionamento privativo gratuito, piscina ao ar livre e bar para tornar sua estadia ainda mais agradável.</p>
+                        </div>
+                        <img src="assets/img1.jpg" alt="Estrutura da pousada" class="h-40 w-full rounded-2xl object-cover sm:h-32 sm:w-44">
+                    </article>
+
+                    <article class="cartao-sobre flex flex-col gap-5 rounded-2xl bg-white p-6 shadow-lg sm:flex-row sm:items-center">
+                        <div class="flex flex-1 flex-col gap-2">
+                            <h3 class="text-xl font-bold">Nossos quartos</h3>
+                            <p class="leading-7 text-slate-600">Os quartos possuem TV de tela plana a cabo, cozinha compacta, área para refeições e ar-condicionado em todas as acomodações.</p>
+                        </div>
+                        <img src="assets/img2.jpg" alt="Quarto da pousada" class="h-40 w-full rounded-2xl object-cover sm:h-32 sm:w-44">
+                    </article>
+
+                    <article class="cartao-sobre flex flex-col gap-5 rounded-2xl bg-white p-6 shadow-lg sm:flex-row sm:items-center">
+                        <div class="flex flex-1 flex-col gap-2">
+                            <h3 class="text-xl font-bold">Alimentação</h3>
+                            <p class="leading-7 text-slate-600">A pousada serve café da manhã em estilo continental ou buffet. Nossos restaurantes funcionam 24 horas para sua comodidade.</p>
+                        </div>
+                        <img src="assets/img3.jpg" alt="Área de alimentação" class="h-40 w-full rounded-2xl object-cover sm:h-32 sm:w-44">
+                    </article>
+
+                    <article class="cartao-sobre flex flex-col gap-5 rounded-2xl bg-white p-6 shadow-lg sm:flex-row sm:items-center">
+                        <div class="flex flex-1 flex-col gap-2">
+                            <h3 class="text-xl font-bold">Recepção</h3>
+                            <p class="leading-7 text-slate-600">Nossa recepção fica aberta 24 horas para oferecer apoio sempre que você precisar durante a hospedagem.</p>
+                        </div>
+                        <img src="assets/img5.jpg" alt="Recepção da pousada" class="h-40 w-full rounded-2xl object-cover sm:h-32 sm:w-44">
+                    </article>
+                </div>
             </div>
-            <form id="formulario-login" class="bg-white p-6 rounded-xl shadow-lg">
-                <label for="email-login" class="block font-bold text-gray-700 mb-2">E-mail</label>
-                <input id="email-login" type="email" placeholder="seuemail@exemplo.com" required class="campo-login w-full border border-gray-300 rounded-md p-3 mb-4 outline-none">
+        </section>
 
-                <label for="senha-login" class="block font-bold text-gray-700 mb-2">Senha</label>
-                <input id="senha-login" type="password" placeholder="Digite sua senha" required minlength="6" class="campo-login w-full border border-gray-300 rounded-md p-3 mb-4 outline-none">
+        <!-- Área para acesso futuro do hóspede -->
+        <section id="area-do-hospede" class="px-4 py-14 sm:px-6">
+            <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2 lg:items-center">
+                <div>
+                    <p class="text-sm font-bold uppercase tracking-[0.3em] text-sky-600">Área do hóspede</p>
+                    <h2 class="mt-2 text-3xl font-bold text-slate-800 sm:text-4xl">Acompanhe reservas e agendamentos</h2>
+                    <p class="mt-4 text-base leading-7 text-slate-600">Esse espaço foi pensado para o hóspede acessar informações importantes da sua estadia de forma simples, rápida e organizada.</p>
+                </div>
 
-                <button type="submit" class="botao-login w-full rounded-md p-3 font-bold text-white border-2 border-white shadow-lg" style="background-color: #2f9f8f; box-shadow: 0 10px 22px rgba(47, 159, 143, 0.35);">Entrar na área de reservas</button>
-                <p id="mensagem-login" class="text-sm text-gray-600 mt-4 mb-0"></p>
-            </form>
-        </div>
-    </div>
+                <form id="formulario-acesso-hospede" class="rounded-2xl bg-white p-6 shadow-lg sm:p-8">
+                    <label for="campo-email-hospede" class="mb-2 block font-bold text-slate-700">E-mail</label>
+                    <input id="campo-email-hospede" type="email" placeholder="seuemail@exemplo.com" required class="campo-de-login mb-4 w-full rounded-md border border-slate-300 p-3 outline-none">
 
-    <!-- RODAPÉ -->
-    <div class="mt-12" style="background-color: #4fb3a3; color: white;">
-        <div class="max-w-4xl mx-auto flex gap-5 items-center p-5">
-            <h3 class="flex-shrink-0 text-lg font-bold m-0">Entre em contato<br>conosco:</h3>
-            <div class="bloco-contato flex-1 flex items-center gap-3">
+                    <label for="campo-senha-hospede" class="mb-2 block font-bold text-slate-700">Senha</label>
+                    <input id="campo-senha-hospede" type="password" placeholder="Digite sua senha" required minlength="6" class="campo-de-login mb-4 w-full rounded-md border border-slate-300 p-3 outline-none">
+
+                    <button type="submit" class="botao-principal-login w-full rounded-md border-2 border-white p-3 font-bold text-white shadow-lg transition duration-300" style="background-color: #2f9f8f; box-shadow: 0 10px 22px rgba(47, 159, 143, 0.35);">Entrar na área de reservas</button>
+                    <p id="aviso-login" class="mt-4 text-sm text-slate-600"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé com canais de contato -->
+    <footer class="mt-12 bg-emerald-400 text-white">
+        <div class="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-4 lg:items-center">
+            <h3 class="text-lg font-bold">Entre em contato conosco:</h3>
+
+            <div class="cartao-contato flex items-center gap-3">
                 <a href="https://google.com.br" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 no-underline text-white">
-                    <img src="assets/icones/endereco.png" alt="Icone de endereço" class="w-12 h-12">
-                    <p class="m-0">Endereço Av. 123, 222 <br> Rio de Janeiro RJ</p>
+                    <img src="assets/icones/endereco.png" alt="Ícone de endereço" class="h-12 w-12">
+                    <p>Endereço Av. 123, 222<br>Rio de Janeiro RJ</p>
                 </a>
             </div>
-            <div class="bloco-contato flex-1 flex items-center gap-3">
-                <img src="assets/icones/telefone.png" alt="Icone telefone" class="w-12 h-12">
-                <p class="m-0">Cel: 5521000000000</p>
+
+            <div class="cartao-contato flex items-center gap-3">
+                <img src="assets/icones/telefone.png" alt="Ícone de telefone" class="h-12 w-12">
+                <p>Cel: 5521000000000</p>
             </div>
-            <div class="bloco-contato flex-1 flex items-center gap-3">
-                <img src="assets/icones/calendario.png" alt="Icone calendário" class="w-12 h-12">
+
+            <div class="cartao-contato flex items-center gap-3">
+                <img src="assets/icones/calendario.png" alt="Ícone de calendário" class="h-12 w-12">
                 <a href="https://booking.com" target="_blank" rel="noopener noreferrer" class="no-underline text-white">
-                    <p class="m-0">Faça sua reserva pelo <br> Booking.com</p>
+                    <p>Faça sua reserva pelo<br>Booking.com</p>
                 </a>
             </div>
         </div>
-        <div class="max-w-4xl mx-auto text-center p-4 border-t border-black border-opacity-5">
-            <p class="m-0 text-white">© 2026 Pousada Maré Alta</p>
+
+        <div class="mx-auto max-w-6xl border-t border-black/5 px-4 py-4 text-center sm:px-6">
+            <p>© 2026 Pousada Maré Alta</p>
         </div>
-    </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

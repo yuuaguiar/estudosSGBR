@@ -1,172 +1,247 @@
-// Interação dos links do menu de navegação
-const linksMenu = document.querySelectorAll('nav a');
-const cabecalho = document.querySelector('.fixed');
+// Seleciona os elementos principais do menu
+const botaoMenu = document.querySelector('#botao-menu');
+const menuPrincipal = document.querySelector('#menu-principal');
+const linksDoMenu = document.querySelectorAll('#menu-principal a');
+const cabecalhoFixo = document.querySelector('header');
 
-const secoesMenu = Array.from(linksMenu)
-    .map(link => {
-        const secao = document.querySelector(link.getAttribute('href'));
-        return secao ? { link, secao } : null;
-    })
-    .filter(Boolean)
-    .sort((primeiro, segundo) => primeiro.secao.offsetTop - segundo.secao.offsetTop);
-
-const aplicarEstiloLink = (link, ativo = false) => {
-    link.style.color = ativo ? '#0ea5e9' : '#4b5563';
-    link.style.fontWeight = ativo ? '600' : '400';
-    link.style.transition = 'color 0.3s ease, font-weight 0.3s ease';
-};
-
-const calcularAlturaCabecalho = () => (cabecalho ? cabecalho.offsetHeight : 0);
-
-const atualizarLinkAtivo = () => {
-    const posicaoAtual = window.scrollY + calcularAlturaCabecalho() + 90;
-    const chegouNoFinal = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
-    const ultimaSecao = secoesMenu[secoesMenu.length - 1];
-    const secaoAtiva = chegouNoFinal && ultimaSecao ? ultimaSecao : secoesMenu.reduce((atual, item) => {
-        return posicaoAtual >= item.secao.offsetTop ? item : atual;
-    }, null);
-
-    linksMenu.forEach(link => aplicarEstiloLink(link, secaoAtiva && link === secaoAtiva.link));
-};
-
-secoesMenu.forEach(({ link, secao }) => {
-    link.addEventListener('mouseenter', () => aplicarEstiloLink(link, true));
-    link.addEventListener('mouseleave', atualizarLinkAtivo);
-
-    link.addEventListener('click', evento => {
-        evento.preventDefault();
-
-        window.scrollTo({
-            top: secao.getBoundingClientRect().top + window.scrollY - calcularAlturaCabecalho() - 16,
-            behavior: 'smooth'
-        });
-    });
-});
-
-let atualizacaoPendente = false;
-
-const agendarAtualizacaoMenu = () => {
-    if (atualizacaoPendente) {
+// Abre e fecha o menu no celular
+const alternarMenuNoCelular = () => {
+    if (!botaoMenu || !menuPrincipal) {
         return;
     }
 
-    atualizacaoPendente = true;
-    window.requestAnimationFrame(() => {
-        atualizarLinkAtivo();
-        atualizacaoPendente = false;
+    const menuEstaAberto = botaoMenu.getAttribute('aria-expanded') === 'true';
+
+    botaoMenu.setAttribute('aria-expanded', String(!menuEstaAberto));
+    menuPrincipal.classList.toggle('hidden');
+};
+
+// Fecha o menu quando precisamos esconder a navegação móvel
+const fecharMenuNoCelular = () => {
+    if (!botaoMenu || !menuPrincipal) {
+        return;
+    }
+
+    botaoMenu.setAttribute('aria-expanded', 'false');
+    menuPrincipal.classList.add('hidden');
+};
+
+// Retorna a altura atual do cabeçalho fixo
+const calcularAlturaDoCabecalho = () => {
+    return cabecalhoFixo ? cabecalhoFixo.offsetHeight : 0;
+};
+
+// Organiza os links do menu junto com a seção correspondente
+const secoesDoMenu = Array.from(linksDoMenu)
+    .map(linkDoMenu => {
+        const alvoDoLink = linkDoMenu.getAttribute('href');
+
+        if (!alvoDoLink || !alvoDoLink.startsWith('#')) {
+            return null;
+        }
+
+        const secaoEncontrada = document.querySelector(alvoDoLink);
+        return secaoEncontrada ? { linkDoMenu, secaoEncontrada } : null;
+    })
+    .filter(Boolean)
+    .sort((primeiroItem, segundoItem) => primeiroItem.secaoEncontrada.offsetTop - segundoItem.secaoEncontrada.offsetTop);
+
+// Aplica o destaque visual do link ativo
+const aplicarEstiloDoLink = (linkDoMenu, estaAtivo = false) => {
+    linkDoMenu.style.color = estaAtivo ? '#0ea5e9' : '#475569';
+    linkDoMenu.style.fontWeight = estaAtivo ? '700' : '400';
+    linkDoMenu.style.transition = 'color 0.3s ease, font-weight 0.3s ease';
+};
+
+// Descobre qual seção está mais próxima da área visível da tela
+const atualizarLinkAtivo = () => {
+    const posicaoAtualDaTela = window.scrollY + calcularAlturaDoCabecalho() + 90;
+    const chegouAoFinalDaPagina = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+    const ultimaSecaoDoMenu = secoesDoMenu[secoesDoMenu.length - 1];
+
+    const secaoAtiva = chegouAoFinalDaPagina && ultimaSecaoDoMenu
+        ? ultimaSecaoDoMenu
+        : secoesDoMenu.reduce((secaoAtual, itemDoMenu) => {
+            return posicaoAtualDaTela >= itemDoMenu.secaoEncontrada.offsetTop ? itemDoMenu : secaoAtual;
+        }, null);
+
+    linksDoMenu.forEach(linkDoMenu => {
+        const linkEstaAtivo = secaoAtiva && linkDoMenu === secaoAtiva.linkDoMenu;
+        aplicarEstiloDoLink(linkDoMenu, linkEstaAtivo);
     });
 };
 
-window.addEventListener('scroll', agendarAtualizacaoMenu, { passive: true });
-window.addEventListener('resize', atualizarLinkAtivo);
+// Faz a rolagem suave ao clicar nos itens do menu
+secoesDoMenu.forEach(({ linkDoMenu, secaoEncontrada }) => {
+    linkDoMenu.addEventListener('mouseenter', () => aplicarEstiloDoLink(linkDoMenu, true));
+    linkDoMenu.addEventListener('mouseleave', atualizarLinkAtivo);
+
+    linkDoMenu.addEventListener('click', eventoDoClique => {
+        eventoDoClique.preventDefault();
+
+        const posicaoAjustadaDaSecao = secaoEncontrada.getBoundingClientRect().top + window.scrollY - calcularAlturaDoCabecalho() - 16;
+
+        window.scrollTo({
+            top: posicaoAjustadaDaSecao,
+            behavior: 'smooth'
+        });
+
+        if (window.innerWidth < 768) {
+            fecharMenuNoCelular();
+        }
+    });
+});
+
+// Evita várias atualizações pesadas enquanto a página rola
+let existeAtualizacaoPendente = false;
+
+const agendarAtualizacaoDoMenu = () => {
+    if (existeAtualizacaoPendente) {
+        return;
+    }
+
+    existeAtualizacaoPendente = true;
+
+    window.requestAnimationFrame(() => {
+        atualizarLinkAtivo();
+        existeAtualizacaoPendente = false;
+    });
+};
+
+// Prepara o botão do menu móvel
+if (botaoMenu) {
+    botaoMenu.addEventListener('click', alternarMenuNoCelular);
+}
+
+// Em telas maiores, o menu deve aparecer naturalmente
+window.addEventListener('resize', () => {
+    atualizarLinkAtivo();
+
+    if (window.innerWidth >= 768 && menuPrincipal) {
+        menuPrincipal.classList.remove('hidden');
+    }
+
+    if (window.innerWidth < 768 && menuPrincipal && botaoMenu && botaoMenu.getAttribute('aria-expanded') !== 'true') {
+        menuPrincipal.classList.add('hidden');
+    }
+});
+
+window.addEventListener('scroll', agendarAtualizacaoDoMenu, { passive: true });
+
+if (window.innerWidth >= 768 && menuPrincipal) {
+    menuPrincipal.classList.remove('hidden');
+}
 
 atualizarLinkAtivo();
 
-// Efeitos nos blocos da página
-const aplicarEfeitoBloco = (seletor, configuracao = {}) => {
-    const blocos = document.querySelectorAll(seletor);
+// Adiciona efeito visual aos cartões da página
+const aplicarEfeitoNosCartoes = (seletorDosCartoes, configuracao = {}) => {
+    const cartoesDaPagina = document.querySelectorAll(seletorDosCartoes);
     const sombraInicial = configuracao.sombraInicial || '';
-    const sombraAtiva = configuracao.sombraAtiva || '0 14px 30px rgba(15, 23, 42, 0.16)';
-    const movimento = configuracao.movimento || 'translateY(-6px)';
+    const sombraQuandoAtivo = configuracao.sombraAtiva || '0 14px 30px rgba(15, 23, 42, 0.16)';
+    const movimentoDoCartao = configuracao.movimento || 'translateY(-6px)';
 
-    blocos.forEach(bloco => {
-        const imagem = bloco.querySelector('img');
+    cartoesDaPagina.forEach(cartaoDaPagina => {
+        const imagemDoCartao = cartaoDaPagina.querySelector('img');
 
-        bloco.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease';
-        bloco.style.cursor = 'pointer';
+        cartaoDaPagina.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        cartaoDaPagina.style.cursor = 'pointer';
 
-        if (imagem) {
-            imagem.style.transition = 'transform 0.3s ease, filter 0.3s ease';
+        if (imagemDoCartao) {
+            imagemDoCartao.style.transition = 'transform 0.3s ease, filter 0.3s ease';
         }
 
-        bloco.addEventListener('mouseenter', () => {
-            bloco.style.transform = movimento;
-            bloco.style.boxShadow = sombraAtiva;
+        cartaoDaPagina.addEventListener('mouseenter', () => {
+            cartaoDaPagina.style.transform = movimentoDoCartao;
+            cartaoDaPagina.style.boxShadow = sombraQuandoAtivo;
 
-            if (imagem) {
-                imagem.style.transform = 'scale(1.04)';
-                imagem.style.filter = 'brightness(1.04)';
+            if (imagemDoCartao) {
+                imagemDoCartao.style.transform = 'scale(1.04)';
+                imagemDoCartao.style.filter = 'brightness(1.04)';
             }
         });
 
-        bloco.addEventListener('mouseleave', () => {
-            bloco.style.transform = 'translateY(0)';
-            bloco.style.boxShadow = sombraInicial;
+        cartaoDaPagina.addEventListener('mouseleave', () => {
+            cartaoDaPagina.style.transform = 'translateY(0)';
+            cartaoDaPagina.style.boxShadow = sombraInicial;
 
-            if (imagem) {
-                imagem.style.transform = 'scale(1)';
-                imagem.style.filter = 'brightness(1)';
+            if (imagemDoCartao) {
+                imagemDoCartao.style.transform = 'scale(1)';
+                imagemDoCartao.style.filter = 'brightness(1)';
             }
         });
     });
 };
 
-aplicarEfeitoBloco('.bloco-quarto', {
+aplicarEfeitoNosCartoes('.cartao-quarto', {
     sombraAtiva: '0 12px 26px rgba(79, 179, 163, 0.25)'
 });
 
-aplicarEfeitoBloco('.bloco-sobre', {
+aplicarEfeitoNosCartoes('.cartao-sobre', {
     sombraInicial: '0 10px 15px rgba(0, 0, 0, 0.10)',
     sombraAtiva: '0 16px 30px rgba(15, 23, 42, 0.18)'
 });
 
-aplicarEfeitoBloco('.bloco-contato', {
+aplicarEfeitoNosCartoes('.cartao-contato', {
     movimento: 'translateY(-4px)',
     sombraAtiva: '0 10px 18px rgba(2, 68, 16, 0.20)'
 });
 
-// Login para uma futura área de reservas
-const formularioLogin = document.querySelector('#formulario-login');
-const mensagemLogin = document.querySelector('#mensagem-login');
-const camposLogin = document.querySelectorAll('.campo-login');
-const botaoLogin = document.querySelector('.botao-login');
+// Seleciona os elementos da área de login
+const formularioDeAcesso = document.querySelector('#formulario-acesso-hospede');
+const avisoDoLogin = document.querySelector('#aviso-login');
+const camposDeLogin = document.querySelectorAll('.campo-de-login');
+const botaoPrincipalDoLogin = document.querySelector('.botao-principal-login');
 
-camposLogin.forEach(campo => {
-    campo.addEventListener('focus', () => {
-        campo.style.borderColor = '#4fb3a3';
-        campo.style.boxShadow = '0 0 0 3px rgba(79, 179, 163, 0.18)';
+// Destaca os campos quando o usuário começa a digitar
+camposDeLogin.forEach(campoDeLogin => {
+    campoDeLogin.addEventListener('focus', () => {
+        campoDeLogin.style.borderColor = '#4fb3a3';
+        campoDeLogin.style.boxShadow = '0 0 0 3px rgba(79, 179, 163, 0.18)';
     });
 
-    campo.addEventListener('blur', () => {
-        campo.style.borderColor = '#d1d5db';
-        campo.style.boxShadow = 'none';
+    campoDeLogin.addEventListener('blur', () => {
+        campoDeLogin.style.borderColor = '#cbd5e1';
+        campoDeLogin.style.boxShadow = 'none';
     });
 });
 
-if (botaoLogin) {
-    const sombraBotaoLogin = '0 10px 22px rgba(47, 159, 143, 0.35)';
-    const sombraBotaoLoginAtivo = '0 14px 28px rgba(47, 159, 143, 0.45)';
+// Dá vida ao botão principal de login
+if (botaoPrincipalDoLogin) {
+    const sombraPadraoDoBotao = '0 10px 22px rgba(47, 159, 143, 0.35)';
+    const sombraAtivaDoBotao = '0 14px 28px rgba(47, 159, 143, 0.45)';
 
-    botaoLogin.style.transition = 'transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease';
-    botaoLogin.style.boxShadow = sombraBotaoLogin;
+    botaoPrincipalDoLogin.style.transition = 'transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease';
+    botaoPrincipalDoLogin.style.boxShadow = sombraPadraoDoBotao;
 
-    botaoLogin.addEventListener('mouseenter', () => {
-        botaoLogin.style.transform = 'translateY(-3px) scale(1.02)';
-        botaoLogin.style.backgroundColor = '#247f72';
-        botaoLogin.style.boxShadow = sombraBotaoLoginAtivo;
+    botaoPrincipalDoLogin.addEventListener('mouseenter', () => {
+        botaoPrincipalDoLogin.style.transform = 'translateY(-3px) scale(1.02)';
+        botaoPrincipalDoLogin.style.backgroundColor = '#247f72';
+        botaoPrincipalDoLogin.style.boxShadow = sombraAtivaDoBotao;
     });
 
-    botaoLogin.addEventListener('mouseleave', () => {
-        botaoLogin.style.transform = 'translateY(0)';
-        botaoLogin.style.backgroundColor = '#2f9f8f';
-        botaoLogin.style.boxShadow = sombraBotaoLogin;
+    botaoPrincipalDoLogin.addEventListener('mouseleave', () => {
+        botaoPrincipalDoLogin.style.transform = 'translateY(0)';
+        botaoPrincipalDoLogin.style.backgroundColor = '#2f9f8f';
+        botaoPrincipalDoLogin.style.boxShadow = sombraPadraoDoBotao;
     });
 }
 
-if (formularioLogin && mensagemLogin) {
-    formularioLogin.addEventListener('submit', evento => {
-        evento.preventDefault();
+// Valida o formulário de login de forma simples
+if (formularioDeAcesso && avisoDoLogin) {
+    formularioDeAcesso.addEventListener('submit', eventoDeEnvio => {
+        eventoDeEnvio.preventDefault();
 
-        const email = document.querySelector('#email-login').value.trim();
-        const senha = document.querySelector('#senha-login').value.trim();
+        const emailDigitado = document.querySelector('#campo-email-hospede').value.trim();
+        const senhaDigitada = document.querySelector('#campo-senha-hospede').value.trim();
 
-        if (!email || senha.length < 6) {
-            mensagemLogin.textContent = 'Preencha o e-mail e uma senha com pelo menos 6 caracteres.';
-            mensagemLogin.style.color = '#b91c1c';
+        if (!emailDigitado || senhaDigitada.length < 6) {
+            avisoDoLogin.textContent = 'Preencha o e-mail e uma senha com pelo menos 6 caracteres.';
+            avisoDoLogin.style.color = '#b91c1c';
             return;
         }
 
-        mensagemLogin.textContent = 'Login recebido. Em breve essa área poderá mostrar reservas e agendamentos.';
-        mensagemLogin.style.color = '#047857';
+        avisoDoLogin.textContent = 'Login recebido. Em breve essa área poderá mostrar reservas e agendamentos.';
+        avisoDoLogin.style.color = '#047857';
     });
 }
