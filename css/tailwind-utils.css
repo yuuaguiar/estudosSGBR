@@ -1,5 +1,4 @@
 
-/* Flexbox */
 .tw-flex { @apply flex; }
 .tw-flex-col { @apply flex-col; }
 .tw-flex-row { @apply flex-row; }
@@ -7,70 +6,58 @@
 .tw-justify-center { @apply justify-center; }
 .tw-justify-between { @apply justify-between; }
 
-/* Grid */
 .tw-grid { @apply grid; }
 .tw-grid-cols-2 { @apply grid-cols-2; }
 .tw-grid-cols-1 { @apply grid-cols-1; }
 
-/* Gaps e Spacing */
 .tw-gap-5 { @apply gap-5; }
 .tw-gap-8 { @apply gap-8; }
 .tw-gap-3 { @apply gap-3; }
 .tw-gap-2 { @apply gap-2; }
 
-/* Padding */
 .tw-p-6 { @apply p-6; }
 .tw-p-5 { @apply p-5; }
 .tw-py-20 { @apply py-20; }
 .tw-px-5 { @apply px-5; }
 .tw-pt-0 { @apply pt-0; }
 
-/* Margin */
 .tw-mt-20 { @apply mt-20; }
 .tw-mt-12 { @apply mt-12; }
 .tw-mt-10 { @apply mt-10; }
 .tw-mx-auto { @apply mx-auto; }
 .tw-my-0 { @apply my-0; }
 
-/* Width e Height */
 .tw-w-full { @apply w-full; }
 .tw-h-full { @apply h-full; }
 .tw-h-screen { @apply h-screen; }
 .tw-w-12 { @apply w-12; }
 .tw-h-12 { @apply h-12; }
 
-/* Max Width */
 .tw-max-w-4xl { @apply max-w-4xl; }
 .tw-max-w-lg { @apply max-w-lg; }
 
-/* Background e Cores */
 .tw-bg-white { @apply bg-white; }
 .tw-bg-cover { @apply bg-cover; }
 .tw-bg-center { @apply bg-center; }
 
-/* Display */
 .tw-block { @apply block; }
 .tw-fixed { @apply fixed; }
 .tw-top-0 { @apply top-0; }
 .tw-left-0 { @apply left-0; }
 .tw-z-1000 { z-index: 1000; }
 
-/* Borders e Rounded */
 .tw-border-2 { @apply border-2; }
 .tw-border-white { @apply border-white; }
 .tw-rounded-lg { @apply rounded-lg; }
 .tw-rounded-xl { @apply rounded-xl; }
 
-/* Text */
 .tw-text-center { @apply text-center; }
 .tw-text-white { @apply text-white; }
 .tw-text-blue-400 { @apply text-blue-400; }
 .tw-text-gray-600 { @apply text-gray-600; }
 
-/* Box Shadow */
 .tw-shadow-lg { @apply shadow-lg; }
 
-/* Responsive */
 @media (max-width: 900px) {
   .tw-md-flex-col { @apply flex-col; }
   .tw-md-w-full { @apply w-full; }

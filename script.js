@@ -1,10 +1,8 @@
-// Seleciona os elementos principais do menu
 const botaoMenu = document.querySelector('#botao-menu');
 const menuPrincipal = document.querySelector('#menu-principal');
 const linksDoMenu = document.querySelectorAll('#menu-principal a');
 const cabecalhoFixo = document.querySelector('header');
 
-// Abre e fecha o menu no celular
 const alternarMenuNoCelular = () => {
     if (!botaoMenu || !menuPrincipal) {
         return;
@@ -16,7 +14,6 @@ const alternarMenuNoCelular = () => {
     menuPrincipal.classList.toggle('hidden');
 };
 
-// Fecha o menu quando precisamos esconder a navegação móvel
 const fecharMenuNoCelular = () => {
     if (!botaoMenu || !menuPrincipal) {
         return;
@@ -26,12 +23,10 @@ const fecharMenuNoCelular = () => {
     menuPrincipal.classList.add('hidden');
 };
 
-// Retorna a altura atual do cabeçalho fixo
 const calcularAlturaDoCabecalho = () => {
     return cabecalhoFixo ? cabecalhoFixo.offsetHeight : 0;
 };
 
-// Organiza os links do menu junto com a seção correspondente
 const secoesDoMenu = Array.from(linksDoMenu)
     .map(linkDoMenu => {
         const alvoDoLink = linkDoMenu.getAttribute('href');
@@ -46,14 +41,12 @@ const secoesDoMenu = Array.from(linksDoMenu)
     .filter(Boolean)
     .sort((primeiroItem, segundoItem) => primeiroItem.secaoEncontrada.offsetTop - segundoItem.secaoEncontrada.offsetTop);
 
-// Aplica o destaque visual do link ativo
 const aplicarEstiloDoLink = (linkDoMenu, estaAtivo = false) => {
     linkDoMenu.style.color = estaAtivo ? '#0ea5e9' : '#475569';
     linkDoMenu.style.fontWeight = estaAtivo ? '700' : '400';
     linkDoMenu.style.transition = 'color 0.3s ease, font-weight 0.3s ease';
 };
 
-// Descobre qual seção está mais próxima da área visível da tela
 const atualizarLinkAtivo = () => {
     const posicaoAtualDaTela = window.scrollY + calcularAlturaDoCabecalho() + 90;
     const chegouAoFinalDaPagina = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
@@ -71,7 +64,6 @@ const atualizarLinkAtivo = () => {
     });
 };
 
-// Faz a rolagem suave ao clicar nos itens do menu
 secoesDoMenu.forEach(({ linkDoMenu, secaoEncontrada }) => {
     linkDoMenu.addEventListener('mouseenter', () => aplicarEstiloDoLink(linkDoMenu, true));
     linkDoMenu.addEventListener('mouseleave', atualizarLinkAtivo);
@@ -92,7 +84,6 @@ secoesDoMenu.forEach(({ linkDoMenu, secaoEncontrada }) => {
     });
 });
 
-// Evita várias atualizações pesadas enquanto a página rola
 let existeAtualizacaoPendente = false;
 
 const agendarAtualizacaoDoMenu = () => {
@@ -108,12 +99,10 @@ const agendarAtualizacaoDoMenu = () => {
     });
 };
 
-// Prepara o botão do menu móvel
 if (botaoMenu) {
     botaoMenu.addEventListener('click', alternarMenuNoCelular);
 }
 
-// Em telas maiores, o menu deve aparecer naturalmente
 window.addEventListener('resize', () => {
     atualizarLinkAtivo();
 
@@ -134,7 +123,6 @@ if (window.innerWidth >= 768 && menuPrincipal) {
 
 atualizarLinkAtivo();
 
-// Adiciona efeito visual aos cartões da página
 const aplicarEfeitoNosCartoes = (seletorDosCartoes, configuracao = {}) => {
     const cartoesDaPagina = document.querySelectorAll(seletorDosCartoes);
     const sombraInicial = configuracao.sombraInicial || '';
@@ -187,13 +175,11 @@ aplicarEfeitoNosCartoes('.cartao-contato', {
     sombraAtiva: '0 10px 18px rgba(2, 68, 16, 0.20)'
 });
 
-// Seleciona os elementos da área de login
 const formularioDeAcesso = document.querySelector('#formulario-acesso-hospede');
 const avisoDoLogin = document.querySelector('#aviso-login');
 const camposDeLogin = document.querySelectorAll('.campo-de-login');
 const botaoPrincipalDoLogin = document.querySelector('.botao-principal-login');
 
-// Destaca os campos quando o usuário começa a digitar
 camposDeLogin.forEach(campoDeLogin => {
     campoDeLogin.addEventListener('focus', () => {
         campoDeLogin.style.borderColor = '#4fb3a3';
@@ -206,7 +192,6 @@ camposDeLogin.forEach(campoDeLogin => {
     });
 });
 
-// Dá vida ao botão principal de login
 if (botaoPrincipalDoLogin) {
     const sombraPadraoDoBotao = '0 10px 22px rgba(47, 159, 143, 0.35)';
     const sombraAtivaDoBotao = '0 14px 28px rgba(47, 159, 143, 0.45)';
@@ -227,7 +212,6 @@ if (botaoPrincipalDoLogin) {
     });
 }
 
-// Valida o formulário de login de forma simples
 if (formularioDeAcesso && avisoDoLogin) {
     formularioDeAcesso.addEventListener('submit', eventoDeEnvio => {
         eventoDeEnvio.preventDefault();
